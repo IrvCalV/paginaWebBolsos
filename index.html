@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SofArt &middot; Bolsos de piel</title>
+  <meta name="description" content="SofArt -- bolsos de piel para mujer y hombre, hechos para durar." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500;600&display=swap"
+  />
+</head>
+<body>
+  <!-- NAV -->
+  <header class="nav" data-open="false">
+    <div class="nav-inner">
+      <a class="nav-brand" href="./index.html">SofArt</a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+      </button>
+      <nav class="nav-links">
+        <a class="is-active" href="./index.html">Inicio</a>
+        <a href="./mujer.html">Mujer</a>
+        <a href="./hombre.html">Hombre</a>
+        <a href="./contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero-slider">
+      <!--
+        DUMMY -- fotos genericas de Unsplash (licencia libre) solo como
+        placeholder. Reemplaza cada src por fotografia real del producto
+        cuando la tengas.
+      -->
+      <div class="hero-slide">
+        <img src="https://images.unsplash.com/photo-1779399160082-c2329fd5100c?auto=format&fit=crop&w=1800&q=80" alt="" />
+      </div>
+      <div class="hero-slide">
+        <img src="https://images.unsplash.com/photo-1643038233773-8c43a9a57f70?auto=format&fit=crop&w=1800&q=80" alt="" />
+      </div>
+      <div class="hero-slide">
+        <img src="https://images.unsplash.com/photo-1778883008356-f7b3789a3073?auto=format&fit=crop&w=1800&q=80" alt="" />
+      </div>
+      <div class="hero-scrim"></div>
+      <div class="container hero-content">
+        <p class="eyebrow">Piel genuina &middot; Hecho a mano</p>
+        <h1>Bolsos que se <em>quedan</em> contigo</h1>
+        <p>
+          Piezas de piel para mujer y hombre, pensadas para acompañar todos los
+          días -- del trabajo al fin de semana, sin perder elegancia.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-on-dark btn-lg" href="./mujer.html">Colección Mujer</a>
+          <a class="btn btn-on-dark btn-lg" href="./hombre.html">Colección Hombre</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIAS -->
+    <section class="categories">
+      <div class="container categories-grid" data-reveal-group>
+        <a class="category-tile" href="./mujer.html">
+          <img src="https://images.unsplash.com/photo-1593267891718-17abae428da0?auto=format&fit=crop&w=1200&q=80" alt="Bolsos de mujer" />
+          <div class="category-tile-label">
+            <p class="eyebrow">Colección</p>
+            <h3>Mujer</h3>
+            <span class="cta">Ver colección</span>
+          </div>
+        </a>
+        <a class="category-tile" href="./hombre.html">
+          <img src="https://images.unsplash.com/photo-1490427712608-588e68359dbd?auto=format&fit=crop&w=1200&q=80" alt="Bolsos de hombre" />
+          <div class="category-tile-label">
+            <p class="eyebrow">Colección</p>
+            <h3>Hombre</h3>
+            <span class="cta">Ver colección</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- DESTACADOS -->
+    <section class="featured">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <p class="eyebrow">Destacados</p>
+          <h2>Piezas favoritas</h2>
+          <p class="lede">Una selección de la colección actual. Duplica un <code>.product-card</code> para agregar más piezas.</p>
+        </div>
+
+        <div class="product-grid" data-reveal-group>
+          <article
+            class="product-card"
+            data-name="Aurora"
+            data-price="$3,450 MXN"
+            data-desc="Tote estructurado de piel genuina, con bolsillo interior y correa ajustable. Pensado para el día a día sin perder presencia."
+            data-img="https://images.unsplash.com/photo-1560891958-68bb1fe7fb78?auto=format&fit=crop&w=900&q=80"
+            data-detail-img="https://images.unsplash.com/photo-1778883008356-f7b3789a3073?auto=format&fit=crop&w=900&q=80"
+            data-detail-caption="Detalle del cuero"
+          >
+            <div class="product-photo">
+              <img src="https://images.unsplash.com/photo-1560891958-68bb1fe7fb78?auto=format&fit=crop&w=700&q=80" alt="Bolso Aurora" loading="lazy" />
+              <div class="product-scrim">
+                <button class="product-quickview" type="button">Ver detalle</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-name">Aurora</p>
+              <p class="product-price">$3,450 MXN</p>
+            </div>
+          </article>
+
+          <article
+            class="product-card"
+            data-name="Roma"
+            data-price="$3,900 MXN"
+            data-desc="Portafolio ejecutivo de piel con compartimento acolchado para laptop. Herrajes en tono bronce."
+            data-img="https://images.unsplash.com/photo-1689757875266-66446af145dc?auto=format&fit=crop&w=900&q=80"
+            data-detail-img="https://images.unsplash.com/photo-1778883008356-f7b3789a3073?auto=format&fit=crop&w=900&q=80"
+            data-detail-caption="Detalle del cuero"
+          >
+            <div class="product-photo">
+              <img src="https://images.unsplash.com/photo-1689757875266-66446af145dc?auto=format&fit=crop&w=700&q=80" alt="Bolso Roma" loading="lazy" />
+              <div class="product-scrim">
+                <button class="product-quickview" type="button">Ver detalle</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-name">Roma</p>
+              <p class="product-price">$3,900 MXN</p>
+            </div>
+          </article>
+
+          <article
+            class="product-card"
+            data-name="Valentina"
+            data-price="$2,250 MXN"
+            data-desc="Crossbody minimalista, ideal para lo esencial. Correa larga ajustable y cierre magnético."
+            data-img="https://images.unsplash.com/photo-1607702705816-81497b0a9009?auto=format&fit=crop&w=900&q=80"
+            data-detail-img="https://images.unsplash.com/photo-1778883008356-f7b3789a3073?auto=format&fit=crop&w=900&q=80"
+            data-detail-caption="Detalle del cuero"
+          >
+            <div class="product-photo">
+              <img src="https://images.unsplash.com/photo-1607702705816-81497b0a9009?auto=format&fit=crop&w=700&q=80" alt="Bolso Valentina" loading="lazy" />
+              <div class="product-scrim">
+                <button class="product-quickview" type="button">Ver detalle</button>
+              </div>
+            </div>
+            <div class="product-info">
+              <p class="product-name">Valentina</p>
+              <p class="product-price">$2,250 MXN</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORIA -->
+    <section class="story">
+      <div class="container story-inner" data-reveal-group>
+        <p class="eyebrow">Nuestra historia</p>
+        <h2>&ldquo;Un bolso bien hecho no pasa de moda -- se vuelve parte de ti.&rdquo;</h2>
+        <p>
+          Reemplaza este texto con la historia real de la marca: de dónde viene el
+          cuero, quién hace las piezas y qué las hace distintas.
+        </p>
+        <div class="story-stats">
+          <div class="story-stat">
+            <strong>100%</strong>
+            <span>Piel genuina</span>
+          </div>
+          <div class="story-stat">
+            <strong>+10</strong>
+            <span>Años de trayectoria</span>
+          </div>
+          <div class="story-stat">
+            <strong>MX</strong>
+            <span>Envíos a todo el país</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter">
+      <div class="container newsletter-inner" data-reveal-group>
+        <p class="eyebrow">Mantente al día</p>
+        <h2>Nuevas colecciones antes que nadie</h2>
+        <form class="newsletter-form" onsubmit="return false">
+          <input type="email" placeholder="Tu correo" aria-label="Correo electrónico" required />
+          <button class="btn btn-primary" type="submit">Suscribirme</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand">SofArt</p>
+        <p class="footer-tagline">Bolsos de piel para mujer y hombre, hechos para durar.</p>
+      </div>
+      <div>
+        <p class="footer-heading">Navegación</p>
+        <nav class="footer-links">
+          <a href="./mujer.html">Mujer</a>
+          <a href="./hombre.html">Hombre</a>
+          <a href="./contacto.html">Contacto</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-heading">Síguenos</p>
+        <nav class="footer-links">
+          <a href="#" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" target="_blank" rel="noopener">TikTok</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-note">&copy; 2026 SofArt.</p>
+      <p class="footer-note">Hecho a mano en México.</p>
+    </div>
+  </footer>
+
+  <!-- QUICK VIEW MODAL (compartido) -->
+  <div class="product-modal" id="product-modal" data-open="false">
+    <div class="product-modal-panel">
+      <button class="product-modal-close" type="button" aria-label="Cerrar">&times;</button>
+      <div class="product-modal-media">
+        <div class="product-modal-slide is-active">
+          <img src="" alt="" />
+        </div>
+        <div class="product-modal-slide">
+          <img src="" alt="" />
+        </div>
+        <p class="product-modal-caption"></p>
+        <div class="product-modal-dots">
+          <button class="product-modal-dot is-active" type="button" aria-label="Foto del producto"></button>
+          <button class="product-modal-dot" type="button" aria-label="Detalle del material"></button>
+        </div>
+      </div>
+      <div class="product-modal-body">
+        <p class="product-modal-eyebrow">SofArt</p>
+        <h3 class="product-modal-name"></h3>
+        <p class="product-modal-price"></p>
+        <p class="product-modal-desc"></p>
+        <a class="btn btn-primary product-modal-cta" href="#">Consultar disponibilidad</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

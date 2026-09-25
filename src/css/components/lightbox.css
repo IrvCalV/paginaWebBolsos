@@ -1,0 +1,175 @@
+/*
+  Pairs with src/js/components/product-lightbox.js. Un solo modal
+  compartido por pagina: el JS rellena texto/imagenes desde los
+  data-* de la tarjeta que se hizo clic. Las dos imagenes (producto +
+  detalle del cuero) estan superpuestas y se cruzan por opacidad al
+  cambiar de slide -- no hay libreria de carrusel.
+*/
+.product-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  background: rgba(10, 10, 11, 0.82);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease;
+}
+
+.product-modal[data-open='true'] {
+  opacity: 1;
+  visibility: visible;
+}
+
+.product-modal-panel {
+  position: relative;
+  width: min(920px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: var(--surface);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  transform: translateY(16px);
+  transition: transform 0.25s ease;
+}
+
+.product-modal[data-open='true'] .product-modal-panel {
+  transform: translateY(0);
+}
+
+.product-modal-close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.product-modal-close:hover,
+.product-modal-close:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.product-modal-media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--surface-alt);
+}
+
+.product-modal-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.product-modal-slide.is-active {
+  opacity: 1;
+}
+
+.product-modal-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-modal-caption {
+  position: absolute;
+  left: var(--space-md);
+  bottom: var(--space-md);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(10, 10, 11, 0.55);
+  padding: 6px 12px;
+}
+
+.product-modal-dots {
+  position: absolute;
+  right: var(--space-md);
+  bottom: var(--space-md);
+  display: flex;
+  gap: 8px;
+}
+
+.product-modal-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.product-modal-dot.is-active {
+  background: var(--ink);
+}
+
+.product-modal-body {
+  padding: var(--space-xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.product-modal-eyebrow {
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+
+.product-modal-name {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+}
+
+.product-modal-price {
+  font-size: var(--text-lg);
+  color: var(--ink-soft);
+}
+
+.product-modal-desc {
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin-top: var(--space-xs);
+}
+
+.product-modal-cta {
+  margin-top: var(--space-md);
+  align-self: flex-start;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 720px) {
+  .product-modal-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .product-modal-media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .product-modal-body {
+    padding: var(--space-lg) var(--space-md);
+  }
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto &middot; SofArt</title>
+  <meta name="description" content="Contacto -- SofArt." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Jost:wght@400;500;600&display=swap"
+  />
+</head>
+<body>
+  <!-- NAV -->
+  <header class="nav" data-open="false">
+    <div class="nav-inner">
+      <a class="nav-brand" href="./index.html">SofArt</a>
+      <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span></span>
+      </button>
+      <nav class="nav-links">
+        <a href="./index.html">Inicio</a>
+        <a href="./mujer.html">Mujer</a>
+        <a href="./hombre.html">Hombre</a>
+        <a class="is-active" href="./contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- BANNER -->
+    <section class="page-banner" style="height: min(38vh, 320px); min-height: 240px;">
+      <!-- DUMMY -- foto generica de Unsplash como placeholder -->
+      <img src="https://images.unsplash.com/photo-1778883008356-f7b3789a3073?auto=format&fit=crop&w=1800&q=80" alt="" />
+      <div class="container page-banner-content">
+        <p class="eyebrow">Contacto</p>
+        <h1>Hablemos</h1>
+      </div>
+    </section>
+
+    <section>
+      <div class="container contact-grid" data-reveal-group>
+        <div class="contact-info">
+          <div class="contact-item">
+            <h3>Escríbenos</h3>
+            <p><a href="mailto:contacto@sofart.com">contacto@sofart.com</a></p>
+          </div>
+          <div class="contact-item">
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/525500000000" target="_blank" rel="noopener">+52 55 0000 0000</a></p>
+          </div>
+          <div class="contact-item">
+            <h3>Showroom</h3>
+            <p>Reemplaza con la dirección real -- calle, colonia, ciudad.</p>
+          </div>
+          <div class="contact-item">
+            <h3>Horario</h3>
+            <p>Lunes a sábado, 11:00 -- 19:00</p>
+          </div>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:contacto@sofart.com">Escribir un correo</a>
+            <a class="btn btn-ghost" href="https://wa.me/525500000000" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+        <div class="contact-map">Mapa / ubicación</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand">SofArt</p>
+        <p class="footer-tagline">Bolsos de piel para mujer y hombre, hechos para durar.</p>
+      </div>
+      <div>
+        <p class="footer-heading">Navegación</p>
+        <nav class="footer-links">
+          <a href="./mujer.html">Mujer</a>
+          <a href="./hombre.html">Hombre</a>
+          <a href="./contacto.html">Contacto</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-heading">Síguenos</p>
+        <nav class="footer-links">
+          <a href="#" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" target="_blank" rel="noopener">TikTok</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-note">&copy; 2026 SofArt.</p>
+      <p class="footer-note">Hecho a mano en México.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

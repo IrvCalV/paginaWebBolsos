@@ -1,0 +1,16 @@
+/*
+  Pairs with src/js/components/scroll-reveal.js. Elements start hidden
+  and offset, then settle into place once the observer marks them
+  visible. JS also sets transition-delay on grouped children to stagger
+  them -- see data-reveal-group in index.html.
+*/
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
