@@ -5,14 +5,21 @@
 }
 
 /*
-  Variante para "Piezas favoritas" en Home -- en vez de 3 columnas
-  identicas, la primera pieza ocupa una celda alta (bento 1+2) para que
-  la fila no se lea como el feature-row generico repetido en cada
-  seccion del sitio.
+  Variante bento 1+2 -- en vez de 3 columnas identicas, la primera pieza
+  ocupa una celda alta y las otras dos se apilan al lado. Usada en
+  "Piezas favoritas" (Home) y en el catalogo de Mujer.
 */
 .product-grid--featured {
   grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+/* Exactamente 2 piezas (p.ej. catalogo de Accesorios) -- 2 columnas
+   parejas en vez de forzar la base de 3 y dejar la tercera vacia. */
+.product-grid--pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 760px;
+  margin-inline: auto;
 }
 
 .product-grid--featured .product-card:first-child {
@@ -24,6 +31,20 @@
 .product-grid--featured .product-card:first-child .product-photo {
   aspect-ratio: auto;
   height: 100%;
+}
+
+/*
+  Un 4to producto (p.ej. Dante en Mujer) no cabe en la cuadricula 1+2 sin
+  dejar una celda vacia -- en vez de eso ocupa las dos columnas como una
+  fila extra tipo banner, con una foto panoramica en vez del recorte
+  vertical de las otras tarjetas.
+*/
+.product-grid--featured .product-card:nth-child(4) {
+  grid-column: 1 / -1;
+}
+
+.product-grid--featured .product-card:nth-child(4) .product-photo {
+  aspect-ratio: 21 / 9;
 }
 
 .product-card {
@@ -39,6 +60,25 @@
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: var(--surface-alt);
+  cursor: pointer;
+}
+
+/* Insignia sobre fotos de muestra (producto aun no disponible). */
+.product-badge {
+  position: absolute;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  z-index: 1;
+  padding: 5px 14px;
+  border: 1px solid rgba(241, 238, 232, 0.45);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  pointer-events: none;
 }
 
 .product-photo img {

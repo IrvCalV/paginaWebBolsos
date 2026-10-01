@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Colección Mujer &middot; SoArt</title>
-  <meta name="description" content="Bolsos de piel para mujer -- SoArt." />
+  <title>Accesorios &middot; SoArt</title>
+  <meta name="description" content="Cinturones, gorras y carteras de piel -- SoArt." />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,9 +23,9 @@
       </button>
       <nav class="nav-links">
         <a href="./index.html">Inicio</a>
-        <a class="is-active" href="./mujer.html">Mujer</a>
+        <a href="./mujer.html">Mujer</a>
         <a href="./hombre.html">Hombre<span class="soon-tag" aria-hidden="true">Pronto</span></a>
-        <a href="./accesorios.html">Accesorios</a>
+        <a class="is-active" href="./accesorios.html">Accesorios</a>
         <a href="./contacto.html">Contacto</a>
       </nav>
     </div>
@@ -34,27 +34,27 @@
   <main>
     <!-- BANNER -->
     <section class="page-banner">
-      <!-- DUMMY -- foto generica de Unsplash como placeholder -->
-      <img src="https://images.unsplash.com/photo-1779399160082-c2329fd5100c?auto=format&fit=crop&w=1800&q=80" alt="" />
+      <img src="./media/gorras/blanca/2.jpg" alt="" />
       <div class="container page-banner-content">
         <p class="eyebrow">Colección</p>
-        <h1>Mujer</h1>
+        <h1>Accesorios</h1>
       </div>
     </section>
 
     <section class="intro-section">
-      <div class="intro-banner">
+      <div class="intro-banner intro-banner--pewter">
         <canvas
           class="sheen-canvas"
           data-sheen
-          data-sheen-a="0.02,0.01,0.005"
-          data-sheen-b="0.68,0.4,0.1"
-          data-sheen-c="1.0,0.93,0.68"
+          data-sheen-a="0.02,0.018,0.014"
+          data-sheen-b="0.48,0.42,0.32"
+          data-sheen-c="0.9,0.85,0.72"
+          data-sheen-speed="0.95"
           aria-hidden="true"
         ></canvas>
         <p class="lede intro">
-          Piezas para usarse todos los días, no solo para la foto: piel genuina,
-          herrajes que no se oxidan y un corte que envejece bien con el tiempo.
+          Los detalles que completan el look: cinturones, gorras y carteras,
+          con la misma piel genuina de nuestras colecciones principales.
         </p>
       </div>
     </section>
@@ -62,85 +62,44 @@
     <!-- CATALOGO -->
     <section class="catalog">
       <div class="container">
-        <div class="product-grid product-grid--featured" data-reveal-group>
+        <div class="product-grid product-grid--pair" data-reveal-group>
           <article
             class="product-card"
-            data-name="Alba"
-            data-price="$1,300 MXN"
-            data-desc="Tote estructurado de piel genuina en tono crema, con bolsillos laterales y doble asa. Pensado para el día a día sin perder presencia."
-            data-img="./media/bolsas/alba/4.jpg"
-            data-images="./media/bolsas/alba/4.jpg,./media/bolsas/alba/1.jpg,./media/bolsas/alba/2.jpg,./media/bolsas/alba/3.jpg,./media/bolsas/alba/5.jpg"
+            data-name="Austin"
+            data-price="$650 MXN"
+            data-desc="Gorra de piel genuina en negro, con ojillos de ventilación y ajuste trasero. Un básico que combina con todo."
+            data-img="./media/gorras/negra/1.jpg"
+            data-images="./media/gorras/negra/1.jpg,./media/gorras/negra/2.jpg,./media/gorras/negra/3.jpg"
           >
             <div class="product-photo">
-              <img src="./media/bolsas/alba/4.jpg" alt="Bolso Alba" loading="lazy" />
+              <img src="./media/gorras/negra/1.jpg" alt="Gorra Austin" loading="lazy" />
               <div class="product-scrim">
                 <button class="product-quickview" type="button">Ver detalle</button>
               </div>
             </div>
             <div class="product-info">
-              <p class="product-name">Alba</p>
-              <p class="product-price">$1,300 MXN</p>
+              <p class="product-name">Austin</p>
+              <p class="product-price">$650 MXN</p>
             </div>
           </article>
 
           <article
             class="product-card"
-            data-name="Julieta"
-            data-price="$1,200 MXN"
-            data-desc="Tote de piel genuina en color chocolate, con bolsillos laterales y detalle de borlas en las asas. Interior amplio para lo esencial del día."
-            data-img="./media/bolsas/julieta/2.jpg"
-            data-images="./media/bolsas/julieta/2.jpg,./media/bolsas/julieta/1.jpg,./media/bolsas/julieta/3.jpg,./media/bolsas/julieta/4.jpg,./media/bolsas/julieta/5.jpg"
+            data-name="Sahara"
+            data-price="$650 MXN"
+            data-desc="Gorra de piel genuina en tono arena, con ojillos de ventilación y ajuste trasero. Un básico que combina con todo."
+            data-img="./media/gorras/blanca/1.jpg"
+            data-images="./media/gorras/blanca/1.jpg,./media/gorras/blanca/2.jpg,./media/gorras/blanca/3.jpg,./media/gorras/blanca/4.jpg"
           >
             <div class="product-photo">
-              <img src="./media/bolsas/julieta/2.jpg" alt="Bolso Julieta" loading="lazy" />
+              <img src="./media/gorras/blanca/1.jpg" alt="Gorra Sahara" loading="lazy" />
               <div class="product-scrim">
                 <button class="product-quickview" type="button">Ver detalle</button>
               </div>
             </div>
             <div class="product-info">
-              <p class="product-name">Julieta</p>
-              <p class="product-price">$1,200 MXN</p>
-            </div>
-          </article>
-
-          <article
-            class="product-card"
-            data-name="Valentina"
-            data-price="$2,250 MXN"
-            data-desc="Crossbody minimalista, ideal para lo esencial. Correa larga ajustable y cierre magnético."
-            data-img="https://images.unsplash.com/photo-1607702705816-81497b0a9009?auto=format&fit=crop&w=900&q=80"
-            data-detail-img="https://images.unsplash.com/photo-1778883008356-f7b3789a3073?auto=format&fit=crop&w=900&q=80"
-            data-detail-caption="Detalle del cuero"
-          >
-            <div class="product-photo">
-              <img src="https://images.unsplash.com/photo-1607702705816-81497b0a9009?auto=format&fit=crop&w=700&q=80" alt="Bolso Valentina" loading="lazy" />
-              <div class="product-scrim">
-                <button class="product-quickview" type="button">Ver detalle</button>
-              </div>
-            </div>
-            <div class="product-info">
-              <p class="product-name">Valentina</p>
-              <p class="product-price">$2,250 MXN</p>
-            </div>
-          </article>
-
-          <article
-            class="product-card"
-            data-name="Dante"
-            data-price="$1,000 MXN"
-            data-desc="Mini mochila estructurada de piel genuina con broche magnético y compartimento acolchado para tablet. Correas ajustables, ideal para el día a día."
-            data-img="./media/bolsas/3/1.jpg"
-            data-images="./media/bolsas/3/1.jpg,./media/bolsas/3/3.jpg,./media/bolsas/3/2.jpg,./media/bolsas/3/4.jpg,./media/bolsas/3/5.jpg"
-          >
-            <div class="product-photo">
-              <img src="./media/bolsas/3/1.jpg" alt="Bolso Dante" loading="lazy" />
-              <div class="product-scrim">
-                <button class="product-quickview" type="button">Ver detalle</button>
-              </div>
-            </div>
-            <div class="product-info">
-              <p class="product-name">Dante</p>
-              <p class="product-price">$1,000 MXN</p>
+              <p class="product-name">Sahara</p>
+              <p class="product-price">$650 MXN</p>
             </div>
           </article>
         </div>
@@ -159,8 +118,8 @@
           <p>Limpia con un paño seco y evita la humedad directa. Guarda en su funda cuando no la uses.</p>
         </div>
         <div class="care-item">
-          <h3>Estilo</h3>
-          <p>Para un estilo fresco todos los días.</p>
+          <h3>Versátiles</h3>
+          <p>Pensados para combinar con cualquier pieza de la colección.</p>
         </div>
       </div>
     </section>
@@ -178,7 +137,7 @@
           <a href="./mujer.html">Mujer</a>
           <a href="./hombre.html">Hombre<span class="soon-tag" aria-hidden="true">Pronto</span></a>
           <a href="./accesorios.html">Accesorios</a>
-        <a href="./contacto.html">Contacto</a>
+          <a href="./contacto.html">Contacto</a>
         </nav>
       </div>
       <div>

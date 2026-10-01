@@ -124,8 +124,12 @@ export function initProductLightbox() {
     stopAutoplay();
   };
 
-  document.querySelectorAll('.product-quickview').forEach((button) => {
-    button.addEventListener('click', () => open(button.closest('.product-card')));
+  // Un solo listener en la foto completa -- antes solo el boton "Ver
+  // detalle" (visible nada mas al hacer hover) abria el modal, lo que en
+  // touch obligaba a un doble tap. El boton sigue en el DOM para teclado:
+  // activarlo dispara un click que burbujea hasta aqui igual.
+  document.querySelectorAll('.product-photo').forEach((photo) => {
+    photo.addEventListener('click', () => open(photo.closest('.product-card')));
   });
 
   modal.querySelector('.product-modal-close')?.addEventListener('click', close);

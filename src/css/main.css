@@ -96,6 +96,7 @@ h3 {
 .intro-banner {
   position: relative;
   width: 100%;
+  overflow: hidden;
   padding: var(--space-2xl) var(--space-lg);
   color: var(--ink);
   background-color: #000;
@@ -106,16 +107,54 @@ h3 {
   background-position: center;
 }
 
+/* Misma foto de cuero que Mujer, pero velo frio en vez de calido -- junto
+   con el tono grafito/acero del sheen-canvas de Hombre (ver HTML), da un
+   caracter distinto sin inventar un set de fotos nuevo. */
+.intro-banner--steel {
+  background-image:
+    linear-gradient(rgba(8, 10, 14, 0.82), rgba(8, 10, 14, 0.88)),
+    url('../media/referencias/cuero.jpg');
+}
+
+/* Tercer tono, a medio camino entre el ambar de Mujer y el acero de
+   Hombre -- un gris calido/peltre neutro para Accesorios. */
+.intro-banner--pewter {
+  background-image:
+    linear-gradient(rgba(14, 12, 10, 0.78), rgba(14, 12, 10, 0.85)),
+    url('../media/referencias/cuero.jpg');
+}
+
+/* Velo de luz animado (WebGL, sheen-effect.js) -- libreria reutilizable,
+   cada seccion le pasa sus propios tonos vía data-sheen-a/b/c en el canvas.
+   Se funde con la foto de fondo en vez de taparla; se queda transparente
+   si WebGL no esta disponible, y es un solo frame estatico con
+   prefers-reduced-motion. */
+.sheen-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
 .intro-banner .lede {
+  position: relative;
+  z-index: 1;
   color: var(--on-dark-soft);
   max-width: 65ch;
   margin-inline: auto;
 }
 
+.intro-banner--steel .lede {
+  color: rgba(226, 232, 240, 0.82);
+}
+
 /* --- Categorias (Inicio) --- */
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-md);
 }
 
@@ -211,6 +250,53 @@ h3 {
 
 .catalog {
   background: var(--surface);
+}
+
+/* Aviso de estado real (catalogo de Hombre con fotos de muestra) -- no es
+   decoracion, es informacion util para quien navega. */
+.coming-soon {
+  display: block;
+  width: fit-content;
+  margin: 0 auto var(--space-lg);
+  padding: 8px 22px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* Version corta del mismo aviso, para ir pegada a un enlace (nav, pie de
+   pagina) sin romper la linea. */
+.soon-tag {
+  display: inline-block;
+  margin-left: 7px;
+  padding: 1px 8px;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+/* Insignia sobre la foto de la tarjeta de categoria Hombre (Home). */
+.category-tile-badge {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  z-index: 1;
+  padding: 6px 16px;
+  border: 1px solid rgba(241, 238, 232, 0.45);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
 }
 
 /*

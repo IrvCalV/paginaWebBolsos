@@ -12,6 +12,7 @@ export default defineConfig({
         main: resolve(process.cwd(), 'index.html'),
         mujer: resolve(process.cwd(), 'mujer.html'),
         hombre: resolve(process.cwd(), 'hombre.html'),
+        accesorios: resolve(process.cwd(), 'accesorios.html'),
         contacto: resolve(process.cwd(), 'contacto.html'),
       },
     },

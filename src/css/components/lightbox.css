@@ -196,15 +196,41 @@ body.modal-open {
 }
 
 @media (max-width: 720px) {
-  .product-modal-panel {
-    grid-template-columns: 1fr;
+  /*
+    Antes colapsaba a una columna (foto ancha arriba, detalle abajo) --
+    eso recortaba la foto a un encuadre 16:10 y escondia el producto
+    completo detras del scroll. Se mantiene foto+detalle lado a lado,
+    igual que en escritorio, solo mas angosto.
+  */
+  .product-modal {
+    padding: var(--space-sm);
   }
 
-  .product-modal-media {
-    aspect-ratio: 16 / 10;
+  .product-modal-panel {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
   }
 
   .product-modal-body {
-    padding: var(--space-lg) var(--space-md);
+    padding: var(--space-md) var(--space-sm);
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .product-modal-name {
+    font-size: var(--text-2xl);
+  }
+
+  .product-modal-price {
+    font-size: var(--text-base);
+  }
+
+  .product-modal-desc {
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+
+  .product-modal-cta {
+    margin-top: var(--space-xs);
   }
 }

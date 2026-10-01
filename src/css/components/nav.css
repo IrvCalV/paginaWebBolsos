@@ -11,6 +11,11 @@
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid var(--line);
+  /* Sangra el fondo hasta el borde real de la pantalla (detras de la
+     barra de Safari) en vez de dejar un hueco cuando esta colapsa o se
+     expande -- el padding empuja el contenido de vuelta a su lugar. */
+  padding-top: env(safe-area-inset-top, 0px);
+  margin-top: calc(-1 * env(safe-area-inset-top, 0px));
 }
 
 .nav-inner {
@@ -156,5 +161,52 @@
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
+  }
+
+  /*
+    Mujer y Hombre: en movil la barra vive abajo (como un tab-bar), en PC
+    sigue arriba igual que Home. El menu desplegable se abre hacia arriba
+    en vez de hacia abajo porque ya no hay espacio debajo de la barra.
+  */
+  body.nav-bottom-mobile {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /*
+    Solido en vez de glass aqui -- con position:fixed + scroll rapido en
+    iOS Safari, el backdrop-filter en vivo provoca un repintado tardio
+    (se ve como una barra gris lisa un instante). Sin blur que recalcular
+    cada frame, el compositor no tiene que ponerse al corriente.
+  */
+  body.nav-bottom-mobile .nav {
+    position: fixed;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin-top: 0;
+    padding-top: 0;
+    /* fixed + bottom:0 ya llega al borde real -- este padding solo evita
+       que el home indicator tape el contenido, el fondo ya sangra solo. */
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    border-bottom: none;
+    border-top: 1px solid var(--line);
+    background: rgba(10, 10, 11, 0.94);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  body.nav-bottom-mobile .nav-links {
+    top: auto;
+    bottom: 100%;
+    border-bottom: none;
+    border-top: 1px solid var(--line);
+    transform: translateY(8px);
+  }
+
+  body.nav-bottom-mobile .nav[data-open='true'] .nav-links {
+    transform: translateY(0);
   }
 }
