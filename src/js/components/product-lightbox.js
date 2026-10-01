@@ -12,18 +12,25 @@
 //     <button class="product-quickview" type="button">Ver detalle</button>
 //   </article>
 //
-// One shared #product-modal in the page gets its text/images filled in
-// from whichever card was clicked. The two images inside the modal
-// cross-fade automatically (setInterval + an `is-active` class whose
-// opacity transition is defined in lightbox.css) and can also be
-// switched by hand with the dots.
+// For a product with more than two photos, add data-images with the full,
+// ordered, comma-separated list instead (data-img/data-detail-img are then
+// ignored). Products that only set data-img + data-detail-img keep working
+// exactly as before -- data-images is optional.
+//
+// One shared #product-modal in the page gets its slides rebuilt from
+// whichever card was clicked. Slides cross-fade automatically (setInterval
+// + an `is-active` class whose opacity transition is defined in
+// lightbox.css) and can also be switched by hand with the prev/next
+// buttons or the dots -- any manual interaction just resets the timer.
 export function initProductLightbox() {
   const modal = document.querySelector('#product-modal');
   if (!modal) return;
 
   const panel = modal.querySelector('.product-modal-panel');
-  const slides = modal.querySelectorAll('.product-modal-slide');
-  const dots = modal.querySelectorAll('.product-modal-dot');
+  const slidesContainer = modal.querySelector('.product-modal-slides');
+  const dotsContainer = modal.querySelector('.product-modal-dots');
+  const prevBtn = modal.querySelector('.product-modal-prev');
+  const nextBtn = modal.querySelector('.product-modal-next');
   const caption = modal.querySelector('.product-modal-caption');
   const nameEl = modal.querySelector('.product-modal-name');
   const priceEl = modal.querySelector('.product-modal-price');
@@ -32,16 +39,13 @@ export function initProductLightbox() {
 
   let autoplay = null;
   let activeIndex = 0;
+  let slideEls = [];
+  let dotEls = [];
 
   const setActive = (index) => {
-    activeIndex = index;
-    slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
-    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
-  };
-
-  const startAutoplay = () => {
-    stopAutoplay();
-    autoplay = window.setInterval(() => setActive((activeIndex + 1) % slides.length), 3500);
+    activeIndex = (index + slideEls.length) % slideEls.length;
+    slideEls.forEach((slide, i) => slide.classList.toggle('is-active', i === activeIndex));
+    dotEls.forEach((dot, i) => dot.classList.toggle('is-active', i === activeIndex));
   };
 
   const stopAutoplay = () => {
@@ -49,14 +53,60 @@ export function initProductLightbox() {
     autoplay = null;
   };
 
-  const open = (card) => {
-    const { name, price, desc, img, detailImg, detailCaption } = card.dataset;
+  const startAutoplay = () => {
+    stopAutoplay();
+    if (slideEls.length < 2) return;
+    autoplay = window.setInterval(() => setActive(activeIndex + 1), 3500);
+  };
 
-    slides[0].querySelector('img').src = img;
-    slides[0].querySelector('img').alt = name;
-    slides[1].querySelector('img').src = detailImg;
-    slides[1].querySelector('img').alt = detailCaption || 'Detalle del material';
-    caption.textContent = detailCaption || 'Detalle del material';
+  const goTo = (index) => {
+    setActive(index);
+    startAutoplay();
+  };
+
+  const buildSlides = (images, names) => {
+    slidesContainer.innerHTML = '';
+    dotsContainer.innerHTML = '';
+
+    slideEls = images.map((src, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'product-modal-slide';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = names[i] || '';
+      slide.appendChild(img);
+      slidesContainer.appendChild(slide);
+      return slide;
+    });
+
+    dotEls = images.map((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'product-modal-dot';
+      dot.setAttribute('aria-label', `Foto ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+      return dot;
+    });
+
+    const hasNav = images.length > 1;
+    prevBtn.hidden = !hasNav;
+    nextBtn.hidden = !hasNav;
+    dotsContainer.hidden = !hasNav;
+  };
+
+  const open = (card) => {
+    const { name, price, desc, img, images, detailImg, detailCaption } = card.dataset;
+
+    const urls = images
+      ? images.split(',').map((url) => url.trim()).filter(Boolean)
+      : [img, detailImg].filter(Boolean);
+    const names = urls.map((_, i) => (i === 0 ? name : `${name} -- foto ${i + 1}`));
+
+    buildSlides(urls, names);
+    caption.textContent = !images && detailCaption ? detailCaption : '';
+    caption.hidden = !caption.textContent;
+
     nameEl.textContent = name;
     priceEl.textContent = price;
     descEl.textContent = desc;
@@ -84,14 +134,13 @@ export function initProductLightbox() {
     if (!panel.contains(event.target)) close();
   });
 
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-      setActive(i);
-      startAutoplay();
-    });
-  });
+  prevBtn.addEventListener('click', () => goTo(activeIndex - 1));
+  nextBtn.addEventListener('click', () => goTo(activeIndex + 1));
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && modal.dataset.open === 'true') close();
+    if (modal.dataset.open !== 'true') return;
+    if (event.key === 'Escape') close();
+    if (event.key === 'ArrowLeft') goTo(activeIndex - 1);
+    if (event.key === 'ArrowRight') goTo(activeIndex + 1);
   });
 }

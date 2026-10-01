@@ -1,9 +1,10 @@
 /*
   Pairs with src/js/components/product-lightbox.js. Un solo modal
-  compartido por pagina: el JS rellena texto/imagenes desde los
-  data-* de la tarjeta que se hizo clic. Las dos imagenes (producto +
-  detalle del cuero) estan superpuestas y se cruzan por opacidad al
-  cambiar de slide -- no hay libreria de carrusel.
+  compartido por pagina: el JS reconstruye las slides/dots desde los
+  data-* de la tarjeta que se hizo clic (2 fotos para la mayoria de
+  productos, hasta 5 cuando la tarjeta trae data-images). Las fotos
+  estan superpuestas y se cruzan por opacidad al cambiar de slide --
+  no hay libreria de carrusel, solo opacity + un intervalo.
 */
 .product-modal {
   position: fixed;
@@ -84,6 +85,40 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.product-modal-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+  background: rgba(10, 10, 11, 0.55);
+  border: none;
+  border-radius: 50%;
+  color: var(--ink);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.product-modal-nav:hover,
+.product-modal-nav:focus-visible {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.product-modal-prev {
+  left: var(--space-sm);
+}
+
+.product-modal-next {
+  right: var(--space-sm);
 }
 
 .product-modal-caption {

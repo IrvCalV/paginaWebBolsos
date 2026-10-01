@@ -71,6 +71,15 @@
   color: var(--on-dark-faint);
 }
 
+/* Firma discreta del autor -- mismo color que .footer-note,
+   en cursiva para leerse como una firma y no como una segunda
+   linea de copyright. */
+.footer-credit {
+  font-size: var(--text-xs);
+  font-style: italic;
+  color: var(--on-dark-faint);
+}
+
 @media (max-width: 780px) {
   .footer-inner {
     grid-template-columns: 1fr 1fr;

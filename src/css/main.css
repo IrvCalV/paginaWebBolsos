@@ -65,6 +65,34 @@ h3 {
   line-height: 1.6;
 }
 
+/* Banda de piel a todo lo ancho de la pantalla (sin .container ni
+   padding-block de <section>), para que no queden huecos de fondo de
+   pagina arriba/abajo ni a los lados -- la textura real de cuero llena
+   todo el bloque, oscurecida con un velo negro para que el texto claro
+   tenga contraste. */
+.intro-section {
+  padding-block: 0;
+}
+
+.intro-banner {
+  position: relative;
+  width: 100%;
+  padding: var(--space-2xl) var(--space-lg);
+  color: var(--ink);
+  background-color: #000;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.78)),
+    url('../media/referencias/cuero.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.intro-banner .lede {
+  color: var(--on-dark-soft);
+  max-width: 65ch;
+  margin-inline: auto;
+}
+
 /* --- Categorias (Inicio) --- */
 .categories-grid {
   display: grid;
@@ -138,19 +166,41 @@ h3 {
   background: var(--surface);
 }
 
-/* --- Historia / manifiesto --- */
+/*
+  Historia / manifiesto: mitad foto, mitad texto, a sangre completa (sin
+  el padding-block que traen las secciones por default) -- misma idea que
+  el patron usado en el "Sobre mi" de otros proyectos. Sin .container en
+  la foto a proposito, para que llegue hasta el borde real de la seccion.
+*/
 .story {
   background: var(--surface-alt);
-  text-align: center;
 }
 
-.story-inner {
-  max-width: 720px;
-  margin-inline: auto;
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 560px;
+}
+
+.story-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story-copy-wrap {
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-2xl);
+  padding-inline: var(--space-xl);
+}
+
+.story-copy {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: var(--space-md);
+  max-width: 46ch;
 }
 
 .story h2 {
@@ -190,9 +240,13 @@ h3 {
   color: var(--on-dark-faint);
 }
 
-/* --- Newsletter / CTA --- */
+/*
+  Newsletter va justo despues de Historia -- si compartieran el mismo
+  fondo (--surface-alt) se sentirian como una sola seccion muy larga, asi
+  que usa --surface para que se note el corte entre ambas.
+*/
 .newsletter {
-  background: var(--surface-alt);
+  background: var(--surface);
   text-align: center;
 }
 
@@ -359,6 +413,26 @@ h3 {
 @media (max-width: 900px) {
   .categories-grid {
     grid-template-columns: 1fr;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .story-photo {
+    height: 320px;
+  }
+
+  .story-copy-wrap {
+    padding-inline: var(--space-sm);
+    padding-block: var(--space-xl) var(--space-lg);
+  }
+
+  .story-copy {
+    max-width: none;
+    text-align: center;
+    align-items: center;
   }
 
   .story-stats {
