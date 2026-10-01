@@ -60,7 +60,7 @@
 
 .product-modal-close:hover,
 .product-modal-close:focus-visible {
-  background: var(--accent);
+  background: var(--ink);
   color: var(--bg);
 }
 
@@ -109,7 +109,7 @@
 
 .product-modal-nav:hover,
 .product-modal-nav:focus-visible {
-  background: var(--accent);
+  background: var(--ink);
   color: var(--bg);
 }
 
@@ -166,7 +166,7 @@
   font-size: var(--text-xs);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--accent-strong);
+  color: var(--ink-faint);
 }
 
 .product-modal-name {

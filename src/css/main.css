@@ -12,6 +12,25 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body);
+  position: relative;
+}
+
+/*
+  Grano cinematografico fijo, muy sutil -- el "lienzo negro infinito" de
+  la referencia Lamborghini se siente plano sin el. pointer-events:none y
+  posicion fija sobre un pseudo-elemento (nunca sobre un contenedor con
+  scroll) para no golpear el framerate en movil (ver guia de DOM cost).
+*/
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4KICA8ZmlsdGVyIGlkPSJuIj4KICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjIiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHNlZWQ9IjMiLz4KICAgIDxmZUNvbG9yTWF0cml4IHR5cGU9Im1hdHJpeCIgdmFsdWVzPSIwIDAgMCAwIDEgIDAgMCAwIDAgMSAgMCAwIDAgMCAxICAwIDAgMCAwLjUgMCIvPgogIDwvZmlsdGVyPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNuKSIvPgo8L3N2Zz4K');
+  background-size: 200px 200px;
 }
 
 .container {
@@ -51,7 +70,7 @@ h3 {
   font-size: var(--text-xs);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--accent-strong);
+  color: var(--ink-faint);
 }
 
 .section-head h2 {
@@ -100,13 +119,19 @@ h3 {
   gap: var(--space-md);
 }
 
+/*
+  Foto rectangular a sangre completa, ambas tarjetas a la misma altura --
+  el recorte circular y el desfase vertical no gustaron, se revirtio a un
+  tile recto y simetrico. El CTA de esquina (flecha en circulo dorado) se
+  conserva como unica accion de la tarjeta.
+*/
 .category-tile {
   position: relative;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  text-decoration: none;
   display: flex;
   align-items: flex-end;
+  text-decoration: none;
 }
 
 .category-tile img {
@@ -127,7 +152,35 @@ h3 {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 10, 11, 0) 40%, rgba(10, 10, 11, 0.8) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.category-tile-cta {
+  position: absolute;
+  right: var(--space-md);
+  bottom: var(--space-md);
+  z-index: 1;
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--bg);
+  font-size: var(--text-lg);
+  line-height: 1;
+  box-shadow: 0 12px 28px -10px rgba(196, 186, 158, 0.55);
+  transition: transform 0.25s ease;
+}
+
+.category-tile:hover .category-tile-cta,
+.category-tile:focus-visible .category-tile-cta {
+  transform: scale(1.08);
+}
+
+.category-tile:active .category-tile-cta {
+  transform: scale(0.94);
 }
 
 .category-tile-label {
@@ -137,24 +190,18 @@ h3 {
   color: var(--ink);
 }
 
-.category-tile-label .eyebrow {
-  color: var(--accent);
-}
-
 .category-tile-label h3 {
   font-size: var(--text-3xl);
   color: var(--ink);
 }
 
-.category-tile-label span.cta {
-  display: inline-block;
-  margin-top: var(--space-xs);
+.category-tile-sub {
+  display: block;
+  margin-top: 2px;
   font-size: var(--text-xs);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--on-dark-soft);
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 3px;
+  color: var(--ink-faint);
 }
 
 /* --- Destacados / catalogo --- */
@@ -230,7 +277,7 @@ h3 {
   display: block;
   font-family: var(--font-display);
   font-size: var(--text-2xl);
-  color: var(--accent);
+  color: var(--ink);
 }
 
 .story-stat span {
@@ -319,7 +366,7 @@ h3 {
 }
 
 .page-banner-content .eyebrow {
-  color: var(--accent);
+  color: var(--ink-faint);
 }
 
 .page-banner-content h1 {
@@ -347,8 +394,24 @@ h3 {
   text-align: center;
 }
 
+/* Divisor fino en vez de 3 tarjetas identicas -- misma idea que "cards
+   solo cuando la elevacion comunica jerarquia real", aqui basta una
+   linea entre bloques (4.4). */
 .care-item {
   max-width: 260px;
+  padding-inline: var(--space-lg);
+  border-left: 1px solid var(--line);
+}
+
+.care-item:first-child {
+  border-left: none;
+}
+
+@media (max-width: 700px) {
+  .care-item {
+    border-left: none;
+    padding-inline: 0;
+  }
 }
 
 .care-item h3 {

@@ -4,6 +4,28 @@
   gap: var(--space-lg);
 }
 
+/*
+  Variante para "Piezas favoritas" en Home -- en vez de 3 columnas
+  identicas, la primera pieza ocupa una celda alta (bento 1+2) para que
+  la fila no se lea como el feature-row generico repetido en cada
+  seccion del sitio.
+*/
+.product-grid--featured {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.product-grid--featured .product-card:first-child {
+  grid-row: span 2;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.product-grid--featured .product-card:first-child .product-photo {
+  aspect-ratio: auto;
+  height: 100%;
+}
+
 .product-card {
   display: flex;
   flex-direction: column;
@@ -75,11 +97,16 @@
   color: var(--dark);
 }
 
+.product-quickview:active {
+  transform: translateY(0) scale(0.95);
+}
+
 .product-info {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: var(--space-sm);
+  gap: 4px var(--space-sm);
 }
 
 .product-name {
@@ -90,7 +117,6 @@
 .product-price {
   font-size: var(--text-sm);
   color: var(--ink-faint);
-  white-space: nowrap;
 }
 
 @media (max-width: 900px) {
@@ -98,5 +124,17 @@
     grid-template-columns: 1fr;
     max-width: 420px;
     margin-inline: auto;
+  }
+
+  /*
+    El bento de "Piezas favoritas" se mantiene igual que en escritorio
+    (Alba protagonista + Roma/Valentina apiladas al lado) -- no colapsa a
+    una sola columna, solo se angosta.
+  */
+  .product-grid--featured {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    max-width: none;
+    margin-inline: 0;
+    gap: var(--space-sm);
   }
 }

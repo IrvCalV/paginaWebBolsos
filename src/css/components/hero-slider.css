@@ -64,7 +64,7 @@
 }
 
 .hero-content .eyebrow {
-  color: var(--accent);
+  color: var(--ink-faint);
 }
 
 .hero-content h1 {
@@ -75,7 +75,6 @@
 }
 
 .hero-content h1 em {
-  color: var(--accent);
   font-style: italic;
 }
 

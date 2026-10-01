@@ -2,17 +2,19 @@
   Design tokens. This is the only file that should define raw color or
   size values -- every other stylesheet consumes these custom properties.
 
-  Marca de bolsos de piel deluxe: base oscura (casi negro neutro, no
-  cafe/otonal) + texto marfil + acento champan/platino apagado en vez de
-  dorado calido. --ink es el color de texto claro (ya que el fondo por
-  defecto es oscuro); --dark es un negro mas profundo para footer,
-  overlays y el modal. Esquinas casi rectas, mucho aire, tipografia
-  editorial. El movimiento vive en zooms suaves y crossfades de imagen,
-  no en color.
+  Marca de bolsos de piel deluxe: disciplina inspirada en Lamborghini --
+  negro absoluto como lienzo dominante, un unico acento champan/platino
+  reservado EXCLUSIVAMENTE para botones de accion primaria (nunca en
+  eyebrows, enlaces de navegacion, enfasis de texto o anillos de foco --
+  esos usan --ink). --ink es el color de texto claro; --dark es el mismo
+  negro absoluto, usado en footer/overlays/modal. Radio cero en botones y
+  tarjetas (las unicas excepciones son los iconos circulares y los chips
+  tipo pildora, ya documentadas donde se usan). El movimiento vive en
+  zooms suaves y crossfades de imagen, no en color.
 */
 :root {
   /* --- Color --- */
-  --bg: #121113;
+  --bg: #000000;
   --surface: #1a1a1c;
   --surface-alt: #242226;
   --ink: #f1eee8;
@@ -22,8 +24,8 @@
   --accent: #c4ba9e;
   --accent-strong: #a69c82;
 
-  --dark: #0a0a0b;
-  --dark-rgb: 10, 10, 11;
+  --dark: #000000;
+  --dark-rgb: 0, 0, 0;
   --on-dark-soft: rgba(241, 238, 232, 0.72);
   --on-dark-faint: rgba(241, 238, 232, 0.46);
 
@@ -53,7 +55,7 @@
   --space-2xl: 104px;
 
   /* --- Misc --- */
-  --radius-sm: 2px;
-  --radius-md: 3px;
+  --radius-sm: 0;
+  --radius-md: 0;
   --max-width: 1240px;
 }
