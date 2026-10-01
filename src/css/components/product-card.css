@@ -177,4 +177,15 @@
     margin-inline: 0;
     gap: var(--space-sm);
   }
+
+  /*
+    Igual para el catalogo de Accesorios (2 piezas) -- se quedan una al
+    lado de la otra en vez de apilarse en una lista vertical larga.
+  */
+  .product-grid--pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: none;
+    margin-inline: 0;
+    gap: var(--space-sm);
+  }
 }

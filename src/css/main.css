@@ -512,15 +512,16 @@ h3 {
 }
 
 /* --- Contacto --- */
-.contact-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: var(--space-xl);
+.contact-single {
+  max-width: 480px;
+  margin-inline: auto;
+  text-align: center;
 }
 
 .contact-info {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-lg);
 }
 
@@ -543,20 +544,9 @@ h3 {
 .contact-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-sm);
   margin-top: var(--space-xs);
-}
-
-.contact-map {
-  aspect-ratio: 4 / 3;
-  background: var(--surface-alt);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ink-faint);
-  font-size: var(--text-sm);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 @media (max-width: 900px) {
@@ -587,10 +577,6 @@ h3 {
   .story-stats {
     grid-template-columns: 1fr;
     gap: var(--space-lg);
-  }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
   }
 }
 
